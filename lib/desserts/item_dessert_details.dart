@@ -1,11 +1,18 @@
 import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ItemDessertDetails extends StatefulWidget {
   final ProductDessert dessert;
-  ItemDessertDetails({Key key, @required this.dessert}) : super(key: key);
+  List<ProductItemCart> productosAgregados = [];
+  ItemDessertDetails({
+    Key key,
+    @required this.dessert,
+    @required this.productosAgregados,
+  }) : super(key: key);
 
   @override
   _ItemDessertDetailsState createState() => _ItemDessertDetailsState();
@@ -25,6 +32,8 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
   Color _font_color_button_mediano = Colors.purple[100];
   // ignore: non_constant_identifier_names
   Color _font_color_button_grande = Colors.white;
+
+  bool exists = false;
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +254,32 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                 ),
                 Expanded(
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      for (int i = 0;
+                          i < widget.productosAgregados.length;
+                          i++) {
+                        if (widget.productosAgregados[i].productTitle
+                            .contains(widget.dessert.productTitle)) {
+                          exists = true;
+                        }
+                      }
+
+                      if (exists) {
+                        print(widget.productosAgregados);
+                        Navigator.of(context).pop(widget.productosAgregados);
+                      } else {
+                        // ignore: non_constant_identifier_names
+                        ProductItemCart product_to_cart = new ProductItemCart(
+                            productTitle: widget.dessert.productTitle,
+                            productAmount: widget.dessert.productAmount,
+                            productPrice: widget.dessert.productPrice,
+                            productImage: widget.dessert.productImage,
+                            liked: widget.dessert.liked);
+                        widget.productosAgregados.add(product_to_cart);
+                        print(widget.productosAgregados);
+                        Navigator.of(context).pop(widget.productosAgregados);
+                      }
+                    },
                     child: Text(
                       "AGREGAR AL CARRITO",
                       style: TextStyle(

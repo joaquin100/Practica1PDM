@@ -107,13 +107,14 @@ class _HomeState extends State<Home> {
     );
   }
 
-  void _openDessertPage() {
-    Navigator.of(context).push(
+  void _openDessertPage() async {
+    productosAgregados = await Navigator.of(context).push(
       MaterialPageRoute(builder: (context) {
         return DessertsPage(
           dessertsList: ProductRepository.loadProducts(
             ProductType.POSTRES,
           ),
+          productosAgregados: productosAgregados,
         );
       }),
     );
