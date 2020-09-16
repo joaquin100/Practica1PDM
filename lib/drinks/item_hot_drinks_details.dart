@@ -1,4 +1,5 @@
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product_hot_drinks.dart';
@@ -270,11 +271,15 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                       } else {
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
-                            productTitle: widget.drink.productTitle,
-                            productAmount: widget.drink.productAmount,
-                            productPrice: widget.drink.productPrice,
-                            productImage: widget.drink.productImage,
-                            liked: widget.drink.liked);
+                          typeOfProduct: ProductType.BEBIDAS,
+                          productTitle: widget.drink.productTitle,
+                          productAmount: widget.drink.productAmount,
+                          productPrice: widget.drink.productPrice,
+                          productImage: widget.drink.productImage,
+                          liked: widget.drink.liked,
+                          productSize: widget.drink.productSize,
+                          productWeight: null,
+                        );
                         widget.productosAgregados.add(product_to_cart);
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);

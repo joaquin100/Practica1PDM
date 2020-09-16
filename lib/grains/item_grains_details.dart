@@ -1,5 +1,6 @@
 import 'package:estructura_practica_1/models/product_grains.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -228,11 +229,15 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                       } else {
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
-                            productTitle: widget.grains.productTitle,
-                            productAmount: widget.grains.productAmount,
-                            productPrice: widget.grains.productPrice,
-                            productImage: widget.grains.productImage,
-                            liked: widget.grains.liked);
+                          typeOfProduct: ProductType.GRANO,
+                          productTitle: widget.grains.productTitle,
+                          productAmount: widget.grains.productAmount,
+                          productPrice: widget.grains.productPrice,
+                          productImage: widget.grains.productImage,
+                          liked: widget.grains.liked,
+                          productSize: null,
+                          productWeight: widget.grains.productWeight,
+                        );
                         widget.productosAgregados.add(product_to_cart);
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);

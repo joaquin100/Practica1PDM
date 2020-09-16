@@ -1,6 +1,7 @@
 import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/models/product_repository.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -270,11 +271,15 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                       } else {
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
-                            productTitle: widget.dessert.productTitle,
-                            productAmount: widget.dessert.productAmount,
-                            productPrice: widget.dessert.productPrice,
-                            productImage: widget.dessert.productImage,
-                            liked: widget.dessert.liked);
+                          typeOfProduct: ProductType.POSTRES,
+                          productTitle: widget.dessert.productTitle,
+                          productAmount: widget.dessert.productAmount,
+                          productPrice: widget.dessert.productPrice,
+                          productImage: widget.dessert.productImage,
+                          liked: widget.dessert.liked,
+                          productSize: widget.dessert.productSize,
+                          productWeight: null,
+                        );
                         widget.productosAgregados.add(product_to_cart);
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);

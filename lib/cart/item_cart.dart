@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ItemCart extends StatefulWidget {
@@ -16,32 +17,70 @@ class ItemCart extends StatefulWidget {
 class _ItemCartState extends State<ItemCart> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(24),
+    return Center(
       child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 12,
-          ),
-          Text("${widget.product.productTitle}"),
-          SizedBox(
-            height: 12,
-          ),
-          IconButton(icon: Icon(Icons.add_circle_outline), onPressed: _addProd),
-          SizedBox(
-            height: 12,
-          ),
-          IconButton(icon: Icon(Icons.remove_circle), onPressed: _remProd),
-          SizedBox(
-            height: 12,
-          ),
-          Text("${widget.product.productAmount}"),
-          SizedBox(
-            height: 12,
-          ),
-          Text("${widget.product.productPrice}"),
-          SizedBox(
-            height: 12,
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
+            height: MediaQuery.of(context).size.height / 4,
+            child: Stack(
+              children: [
+                Container(
+                  color: cuppingOrangeEC9762,
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(Icons.favorite),
+                    color: widget.product.liked ? Colors.black : Colors.white,
+                    onPressed: () {},
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.restore_from_trash,
+                    ),
+                    color: Colors.black,
+                    onPressed: () {},
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 10,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 0,
+                      bottom: 0,
+                      left: 70,
+                      right: 50,
+                    ),
+                    child: Image.network(
+                      widget.product.productImage,
+                      height: 100,
+                      width: 100,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: IconButton(
+                    icon: Icon(Icons.add_circle_outline),
+                    onPressed: _addProd,
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  child: IconButton(
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: _remProd,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
