@@ -1,5 +1,6 @@
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
+import 'package:estructura_practica_1/payment.dart';
 import 'package:flutter/material.dart';
 
 import '../models/product_hot_drinks.dart';
@@ -48,7 +49,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+              margin: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
               height: MediaQuery.of(context).size.height / 3,
               child: Stack(
                 children: [
@@ -87,15 +88,12 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
               padding: const EdgeInsets.only(bottom: 10),
               child: Text("${widget.drink.productTitle}"),
             ),
-            SizedBox(
-              height: 10,
-            ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Text("${widget.drink.productDescription}"),
             ),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -111,7 +109,11 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text("\$${widget.drink.productPrice}"),
+                      Text("\$${widget.drink.productPrice}",
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          )),
                     ],
                   ),
                 ),
@@ -307,7 +309,13 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                 ),
                 Expanded(
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Payment
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Payment()),
+                      );
+                    },
                     child: Text(
                       "COMPRAR AHORA",
                       style: TextStyle(
