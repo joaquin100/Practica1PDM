@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 5),
+      Duration(seconds: 10),
       () => Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -34,10 +34,16 @@ class _SplashScreenState extends State<SplashScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/cafe.jpg"), fit: BoxFit.cover),
+          image: AssetImage("assets/cafe.jpg"),
+          fit: BoxFit.cover,
+        ),
       ),
-      child: Image(
-        image: AssetImage('assets/cupping.png'),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 90),
+        child: Image(
+          height: 130,
+          image: AssetImage('assets/cupping.png'),
+        ),
       ),
     );
   }

@@ -24,6 +24,19 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+  - family: OpenSansLight
+    fonts:
+      - asset: fonts/OpenSans-Light.ttf
+  - family: OpenSansRegular
+    fonts:
+      - asset: fonts/OpenSans-Regular.ttf
+  - family: AkzidenzGroteskMedium
+    fonts:
+      - asset: fonts/AkzidenzGrotesk-Medium.otf
+  - family: AkzidenzGroteskMediumItalic
+    fonts:
+      - asset: fonts/AkzidenzGrotesk-MediumItalic.otf
   assets:
     - assets/cupping.png
     - assets/cafe.jpg

@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/login/login.dart';
 import 'package:estructura_practica_1/login/register.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +28,12 @@ class _PageToEnterState extends State<PageToEnter> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40,
+                  ),
                   child: MaterialButton(
+                    height: 40.0,
+                    minWidth: 80,
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -38,13 +43,20 @@ class _PageToEnterState extends State<PageToEnter> {
                     },
                     child: Text(
                       "REGISTRATE",
-                      style: TextStyle(color: cuppingBlack121B22),
+                      style: TextStyle(
+                        color: cuppingBlack121B22,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                     color: cuppingGray8B8175,
                   ),
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 15,
           ),
           Row(
             children: [
@@ -53,10 +65,22 @@ class _PageToEnterState extends State<PageToEnter> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                   child: MaterialButton(
-                    onPressed: () {},
+                    height: 40.0,
+                    minWidth: 80,
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                      );
+                    },
                     child: Text(
                       "INGRESA",
-                      style: TextStyle(color: cuppingBlack121B22),
+                      style: TextStyle(
+                        color: cuppingBlack121B22,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                     color: cuppingGray8B8175,
                   ),

@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 
+import 'cart/cart.dart';
+import 'models/product_item_cart.dart';
+
+// ignore: must_be_immutable
 class Profile extends StatelessWidget {
-  const Profile({Key key}) : super(key: key);
+  List<ProductItemCart> productosAgregados = [];
+  Profile({
+    Key key,
+    @required this.productosAgregados,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(PROFILE_TITLE),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
-          ),
-        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(24.0),
@@ -53,7 +55,13 @@ class Profile extends StatelessWidget {
                 ListTile(
                   title: Text(PROFILE_CART),
                   leading: Icon(Icons.shopping_cart),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => Cart(productsList: productosAgregados),
+                      ),
+                    );
+                  },
                 ),
                 ListTile(
                   title: Text(PROFILE_WISHES),

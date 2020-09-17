@@ -1,22 +1,19 @@
+import 'package:estructura_practica_1/home/home.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../home/home.dart';
-import '../utils/constants.dart';
-
-class Register extends StatefulWidget {
-  Register({Key key}) : super(key: key);
+class Login extends StatefulWidget {
+  Login({Key key}) : super(key: key);
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _LoginState createState() => _LoginState();
 }
 
-class _RegisterState extends State<Register> {
+class _LoginState extends State<Login> {
   final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
-  final _emailFocusNode = FocusNode();
 
   bool check = false;
 
@@ -45,7 +42,7 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: [
               SizedBox(
-                height: 30,
+                height: 70,
               ),
               Padding(
                 padding:
@@ -89,35 +86,6 @@ class _RegisterState extends State<Register> {
                   Padding(
                     padding: const EdgeInsets.only(left: 14.0),
                     child: Text(
-                      "Email:",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextField(
-                  style: TextStyle(
-                    color: cuppingBlue214254,
-                  ),
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                  focusNode: _emailFocusNode,
-                ),
-              ),
-              SizedBox(height: 5.0),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 14.0),
-                    child: Text(
                       "Password:",
                       style: TextStyle(
                         color: Colors.white,
@@ -153,33 +121,6 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
               ),
-              SizedBox(height: 3.0),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Checkbox(
-                      value: check,
-                      activeColor: Colors.grey,
-                      onChanged: (bool x) {
-                        setState(() {
-                          check = x;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text(
-                      "ACEPTO LOS TÉRMINOS Y CONDICIONES DE USO",
-                      style: TextStyle(
-                        color: cuppingGrayBCB0A1,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               SizedBox(
                 height: 3,
               ),
@@ -207,7 +148,7 @@ class _RegisterState extends State<Register> {
                           );
                         },
                         child: Text(
-                          "REGISTRATE",
+                          "INGRESA",
                           style: TextStyle(color: cuppingBlack121B22),
                         ),
                         color: cuppingGray8B8175,
@@ -222,6 +163,23 @@ class _RegisterState extends State<Register> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  "¿Olvidaste tu password?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: cuppingGrayBCB0A1,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -246,6 +204,9 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              )
             ],
           ),
         ),
