@@ -44,6 +44,14 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
         title: Text(
           "${widget.drink.productTitle}",
         ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop(widget.productosAgregados);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -93,7 +101,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
               child: Text("${widget.drink.productDescription}"),
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -120,7 +128,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -337,7 +345,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                   width: 10,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
