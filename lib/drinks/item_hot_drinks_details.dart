@@ -41,6 +41,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "${widget.drink.productTitle}",
         ),
@@ -98,7 +99,10 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: Text("${widget.drink.productDescription}"),
+              child: Text(
+                "${widget.drink.productDescription}",
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(
               height: 5,
@@ -117,11 +121,13 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text("\$${widget.drink.productPrice}",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Text(
+                        "\$${widget.drink.productPrice}",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),

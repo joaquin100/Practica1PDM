@@ -44,8 +44,8 @@ class _ItemDessertState extends State<ItemDessert> {
                     padding: const EdgeInsets.only(
                       top: 0,
                       bottom: 0,
-                      left: 70,
-                      right: 50,
+                      left: 90,
+                      right: 40,
                     ),
                     child: Image.network(
                       widget.dessert.productImage,
@@ -55,18 +55,39 @@ class _ItemDessertState extends State<ItemDessert> {
                   ),
                 ),
                 Positioned(
-                  child: Text("Cafe"),
-                ),
-                Positioned(
-                  top: 20,
-                  child: Container(
-                    width: 30,
-                    child: Text("${widget.dessert.productTitle}"),
+                  top: 10,
+                  left: 10,
+                  child: Text(
+                    "Postre",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
                   ),
                 ),
                 Positioned(
-                  top: 40,
-                  child: Text("${widget.dessert.productPrice}"),
+                  top: 45,
+                  left: 10,
+                  child: Container(
+                    width: 80,
+                    child: Text(
+                      "${widget.dessert.productTitle}",
+                      style: TextStyle(
+                        color: cuppingWhiteFFFFFF,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 110,
+                  left: 10,
+                  child: Text(
+                    "\$${widget.dessert.productPrice}",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),

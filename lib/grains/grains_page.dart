@@ -18,7 +18,16 @@ class GrainsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Café de grano"),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop(productosAgregados);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -43,7 +52,7 @@ class GrainsPage extends StatelessWidget {
                           ),
                         ),
                       );
-                      Navigator.of(context).pop(productosAgregados);
+                      //Navigator.of(context).pop(productosAgregados);
                     },
                     child: ItemGrains(
                       grains: grainsList[index],

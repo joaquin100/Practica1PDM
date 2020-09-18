@@ -30,6 +30,7 @@ class _HomeState extends State<Home> {
       ),
       key: _scaffoldKey,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(widget.title),
         actions: <Widget>[
           IconButton(

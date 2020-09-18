@@ -19,6 +19,15 @@ class DessertsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Postres"),
+        centerTitle: true,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop(productosAgregados);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+          ),
+        ),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -43,7 +52,7 @@ class DessertsPage extends StatelessWidget {
                           ),
                         ),
                       );
-                      Navigator.of(context).pop(productosAgregados);
+                      //Navigator.of(context).pop(productosAgregados);
                     },
                     child: ItemDessert(
                       dessert: dessertsList[index],

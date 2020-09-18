@@ -2,6 +2,7 @@ import 'package:estructura_practica_1/models/product_dessert.dart';
 import 'package:estructura_practica_1/models/product_hot_drinks.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/models/product_repository.dart';
+import 'package:estructura_practica_1/payment.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +41,17 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           "${widget.dessert.productTitle}",
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop(widget.productosAgregados);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -72,7 +82,7 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                     left: 0,
                     right: 0,
                     child: Padding(
-                      padding: const EdgeInsets.all(34.0),
+                      padding: const EdgeInsets.all(32.0),
                       child: Image.network(
                         widget.dessert.productImage,
                         height: 100,
@@ -88,14 +98,17 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
               child: Text("${widget.dessert.productTitle}"),
             ),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
-              child: Text("${widget.dessert.productDescription}"),
+              child: Text(
+                "${widget.dessert.productDescription}",
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -111,14 +124,20 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text("\$${widget.dessert.productPrice}"),
+                      Text(
+                        "\$${widget.dessert.productPrice}",
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -307,7 +326,13 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                 ),
                 Expanded(
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Payment
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Payment()),
+                      );
+                    },
                     child: Text(
                       "COMPRAR AHORA",
                       style: TextStyle(

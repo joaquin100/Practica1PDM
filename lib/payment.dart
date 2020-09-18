@@ -1,3 +1,4 @@
+import 'package:estructura_practica_1/home/home.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -22,13 +23,17 @@ class _PaymentState extends State<Payment> {
             Padding(
               padding: const EdgeInsets.only(
                 left: 60,
-                top: 30,
+                top: 20,
                 right: 70,
                 bottom: 0,
               ),
               child: Text(
                 "Elige tú método de pago:",
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: cuppingBlue214254,
+                ),
               ),
             ),
             Padding(
@@ -59,13 +64,14 @@ class _PaymentState extends State<Payment> {
                           padding: const EdgeInsets.only(
                             left: 30,
                             top: 0,
-                            right: 10,
+                            right: 0,
                             bottom: 30,
                           ),
                           child: Text(
                             "Tarjeta de crédito",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Colors.white,
                             ),
                           ),
@@ -118,6 +124,7 @@ class _PaymentState extends State<Payment> {
                           ),
                           child: Text(
                             "PayPal",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
@@ -166,13 +173,14 @@ class _PaymentState extends State<Payment> {
                           padding: const EdgeInsets.only(
                             left: 30,
                             top: 0,
-                            right: 20,
+                            right: 10,
                             bottom: 20,
                           ),
                           child: Text(
                             "Tarjeta de regalo",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 20,
                               color: Colors.white,
                             ),
                           ),
@@ -264,8 +272,21 @@ class _PaymentState extends State<Payment> {
               ],
             ),
             MaterialButton(
-              child: Text("ACEPTAR"),
-              onPressed: () {},
+              child: Text(
+                "ACEPTAR",
+                style: TextStyle(color: Colors.purple),
+              ),
+              onPressed: () {
+                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(
+                          title:
+                              APP_TITLE) //builder: (context) => Home(title: APP_TITLE)
+                      ),
+                );
+              },
             ),
           ],
         );

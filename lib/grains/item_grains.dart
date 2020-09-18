@@ -42,10 +42,10 @@ class _ItemGrainsState extends State<ItemGrains> {
                   right: 0,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 0,
-                      bottom: 0,
-                      left: 70,
-                      right: 50,
+                      top: 10,
+                      bottom: 10,
+                      left: 90,
+                      right: 40,
                     ),
                     child: Image.network(
                       widget.grains.productImage,
@@ -55,18 +55,39 @@ class _ItemGrainsState extends State<ItemGrains> {
                   ),
                 ),
                 Positioned(
-                  child: Text("Café de grano"),
-                ),
-                Positioned(
-                  top: 20,
-                  child: Container(
-                    width: 30,
-                    child: Text("${widget.grains.productTitle}"),
+                  top: 10,
+                  left: 10,
+                  child: Text(
+                    "Café de grano",
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
                   ),
                 ),
                 Positioned(
-                  top: 40,
-                  child: Text("${widget.grains.productPrice}"),
+                  top: 45,
+                  left: 10,
+                  child: Container(
+                    width: 90,
+                    child: Text(
+                      "${widget.grains.productTitle}",
+                      style: TextStyle(
+                        color: cuppingWhiteFFFFFF,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 100,
+                  left: 10,
+                  child: Text(
+                    "\$${widget.grains.productPrice}",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ],
             ),

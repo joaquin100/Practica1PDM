@@ -73,11 +73,13 @@ class _ItemHotDrinksState extends State<ItemHotDrinks> {
                   left: 10,
                   child: Container(
                     width: 80,
-                    child: Text("${widget.drink.productTitle}",
-                        style: TextStyle(
-                          color: cuppingWhiteFFFFFF,
-                          fontSize: 15,
-                        )),
+                    child: Text(
+                      "${widget.drink.productTitle}",
+                      style: TextStyle(
+                        color: cuppingWhiteFFFFFF,
+                        fontSize: 15,
+                      ),
+                    ),
                   ),
                 ),
                 Positioned(
