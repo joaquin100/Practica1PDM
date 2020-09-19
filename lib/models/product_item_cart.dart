@@ -12,6 +12,7 @@ class ProductItemCart {
   bool liked;
   ProductWeight productWeight;
   ProductSize productSize;
+  String feature;
 
   ProductItemCart({
     @required this.typeOfProduct,
@@ -22,5 +23,6 @@ class ProductItemCart {
     @required this.liked,
     @required this.productWeight,
     @required this.productSize,
+    @required this.feature,
   });
 }

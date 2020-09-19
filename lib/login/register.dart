@@ -45,7 +45,7 @@ class _RegisterState extends State<Register> {
           child: Column(
             children: [
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Padding(
                 padding:
@@ -112,7 +112,7 @@ class _RegisterState extends State<Register> {
                   focusNode: _emailFocusNode,
                 ),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 3.0),
               Row(
                 children: [
                   Padding(

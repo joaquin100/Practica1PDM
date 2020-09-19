@@ -58,7 +58,7 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
               height: MediaQuery.of(context).size.height / 3,
               child: Stack(
                 children: [
@@ -288,8 +288,12 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);
                       } else {
+                        widget.dessert.productAmount = 1;
+                        widget.dessert.feature =
+                            widget.dessert.productFeature();
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
+                          feature: widget.dessert.feature,
                           typeOfProduct: ProductType.POSTRES,
                           productTitle: widget.dessert.productTitle,
                           productAmount: widget.dessert.productAmount,

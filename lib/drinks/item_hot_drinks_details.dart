@@ -58,7 +58,7 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 20),
               height: MediaQuery.of(context).size.height / 3,
               child: Stack(
                 children: [
@@ -285,8 +285,11 @@ class _ItemHotDrinkDetailsState extends State<ItemHotDrinkDetails> {
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);
                       } else {
+                        widget.drink.productAmount = 1;
+                        widget.drink.feature = widget.drink.productFeature();
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
+                          feature: widget.drink.feature,
                           typeOfProduct: ProductType.BEBIDAS,
                           productTitle: widget.drink.productTitle,
                           productAmount: widget.drink.productAmount,

@@ -10,8 +10,9 @@ class ProductGrains {
   final String productImage; // url de imagen del producto
   ProductWeight productWeight; // tamano del producto
   double productPrice; // precio del producto autocalculado
-  final int productAmount; // cantidad de producto por comprar
+  int productAmount; // cantidad de producto por comprar
   bool liked;
+  String feature;
 
   ProductGrains({
     @required this.productTitle,
@@ -20,6 +21,7 @@ class ProductGrains {
     @required this.productWeight,
     @required this.productAmount,
     this.liked = false,
+    this.feature = "",
   }) {
     // inicializa el precio de acuerdo al weight del producto
     productPrice = productPriceCalculator();
@@ -31,5 +33,11 @@ class ProductGrains {
     if (this.productWeight == ProductWeight.KILO)
       return (40 + Random().nextInt(60)).toDouble();
     return 9999.0;
+  }
+
+  String productFeature() {
+    if (this.productWeight == ProductWeight.CUARTO) return "250gr";
+    if (this.productWeight == ProductWeight.KILO) return "1K";
+    return "";
   }
 }

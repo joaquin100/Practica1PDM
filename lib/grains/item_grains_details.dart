@@ -54,7 +54,7 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               height: MediaQuery.of(context).size.height / 3,
               child: Stack(
                 children: [
@@ -247,8 +247,11 @@ class _ItemGrainsDetailsState extends State<ItemGrainsDetails> {
                         print(widget.productosAgregados);
                         Navigator.of(context).pop(widget.productosAgregados);
                       } else {
+                        widget.grains.productAmount = 1;
+                        widget.grains.feature = widget.grains.productFeature();
                         // ignore: non_constant_identifier_names
                         ProductItemCart product_to_cart = new ProductItemCart(
+                          feature: widget.grains.feature,
                           typeOfProduct: ProductType.GRANO,
                           productTitle: widget.grains.productTitle,
                           productAmount: widget.grains.productAmount,

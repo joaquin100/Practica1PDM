@@ -77,7 +77,7 @@ class _ItemHotDrinksState extends State<ItemHotDrinks> {
                       "${widget.drink.productTitle}",
                       style: TextStyle(
                         color: cuppingWhiteFFFFFF,
-                        fontSize: 15,
+                        fontSize: 14,
                       ),
                     ),
                   ),

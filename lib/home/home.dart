@@ -2,6 +2,7 @@ import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/grains/grains_page.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
+import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
 import 'package:estructura_practica_1/profile.dart';
@@ -24,8 +25,56 @@ class _HomeState extends State<Home> {
     var _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       drawer: Drawer(
-        child: Profile(
-          productosAgregados: productosAgregados,
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: cuppingOrangeEC9762),
+              accountName: Text(PROFILE_NAME),
+              accountEmail: Text(PROFILE_EMAIL),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: cuppingGray8B8175,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    PROFILE_PICTURE,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            ListTile(
+              title: Text(PROFILE_CART),
+              leading: Icon(Icons.shopping_cart),
+              onTap: () async {
+                productosAgregados = await Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => Cart(productsList: productosAgregados),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text(PROFILE_WISHES),
+              leading: Icon(Icons.thumb_up),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(PROFILE_HISTORY),
+              leading: Icon(Icons.store),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text(PROFILE_SETTINGS),
+              leading: Icon(Icons.settings),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("LOG OUT"),
+              leading: Icon(Icons.close),
+              onTap: () {},
+            ),
+          ],
         ), // Populate the Drawer in the next step.
       ),
       key: _scaffoldKey,
@@ -35,8 +84,8 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.of(context).push(
+            onPressed: () async {
+              productosAgregados = await Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => Cart(productsList: productosAgregados),
                 ),

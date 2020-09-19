@@ -9,8 +9,9 @@ class ProductHotDrinks {
   final String productImage; // url de imagen del producto
   ProductSize productSize; // tamano del producto
   double productPrice; // precio del producto autocalculado
-  final int productAmount; // cantidad de producto por comprar
+  int productAmount; // cantidad de producto por comprar
   bool liked;
+  String feature;
 
   ProductHotDrinks({
     @required this.productTitle,
@@ -19,6 +20,7 @@ class ProductHotDrinks {
     @required this.productSize,
     @required this.productAmount,
     this.liked = false,
+    this.feature = "",
   }) {
     // inicializa el precio de acuerdo a la size del producto
     productPrice = productPriceCalculator();
@@ -48,5 +50,12 @@ class ProductHotDrinks {
     if (this.productSize == ProductSize.G)
       return (60 + Random().nextInt(80)).toDouble();
     return 999.0;
+  }
+
+  String productFeature() {
+    if (this.productSize == ProductSize.CH) return "Tamaño grande";
+    if (this.productSize == ProductSize.M) return "Tamaño mediano";
+    if (this.productSize == ProductSize.G) return "Tamaño chico";
+    return "";
   }
 }

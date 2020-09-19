@@ -1,8 +1,9 @@
+import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ItemCart extends StatefulWidget {
-  final dynamic product;
+  final ProductItemCart product;
   final ValueChanged<double> onAmountUpdated;
   ItemCart({
     Key key,
@@ -36,32 +37,22 @@ class _ItemCartState extends State<ItemCart> {
                     onPressed: () {},
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.restore_from_trash,
-                    ),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
                 Positioned(
                   top: 0,
                   bottom: 0,
-                  left: 10,
-                  right: 0,
+                  left: 0,
+                  right: 40,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 0,
-                      bottom: 0,
-                      left: 70,
-                      right: 50,
+                      top: 10,
+                      bottom: 30,
+                      left: 5,
+                      right: 160,
                     ),
                     child: Image.network(
                       widget.product.productImage,
                       height: 100,
-                      width: 100,
+                      width: 80,
                     ),
                   ),
                 ),
@@ -73,10 +64,82 @@ class _ItemCartState extends State<ItemCart> {
                   ),
                 ),
                 Positioned(
-                  top: 0,
+                  bottom: 0,
+                  left: 40,
                   child: IconButton(
                     icon: Icon(Icons.remove_circle),
                     onPressed: _remProd,
+                  ),
+                ),
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 70,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("${widget.product.productTitle}",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 15)),
+                  ),
+                ),
+                Positioned(
+                  top: 100,
+                  bottom: 0,
+                  left: 70,
+                  right: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "${widget.product.productAmount}",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 100,
+                  bottom: 0,
+                  left: 150,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "\$${widget.product.productPrice}",
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 30,
+                  bottom: 0,
+                  left: 70,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "${widget.product.feature}",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 5,
+                  bottom: 0,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.restore_from_trash,
+                    ),
+                    color: Colors.black,
+                    onPressed: () {
+                      setState(() {
+                        //widget.product.productTitle = null;
+                        print("Removing");
+                      });
+                    },
                   ),
                 ),
               ],
@@ -96,8 +159,12 @@ class _ItemCartState extends State<ItemCart> {
 
   void _remProd() {
     setState(() {
-      --widget.product.productAmount;
+      if (widget.product.productAmount <= 0) {
+        widget.product.productAmount = 0;
+      } else {
+        --widget.product.productAmount;
+        widget.onAmountUpdated(-1 * widget.product.productPrice);
+      }
     });
-    widget.onAmountUpdated(-1 * widget.product.productPrice);
   }
 }
