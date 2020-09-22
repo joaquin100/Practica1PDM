@@ -1,11 +1,11 @@
 import 'package:estructura_practica_1/cart/cart.dart';
 import 'package:estructura_practica_1/desserts/desserts_page.dart';
 import 'package:estructura_practica_1/grains/grains_page.dart';
+import 'package:estructura_practica_1/login/page_to_enter.dart';
 import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:estructura_practica_1/home/item_home.dart';
-import 'package:estructura_practica_1/profile.dart';
 import '../drinks/hot_drinks_page.dart';
 import '../models/product_repository.dart';
 
@@ -72,7 +72,16 @@ class _HomeState extends State<Home> {
             ListTile(
               title: Text("LOG OUT"),
               leading: Icon(Icons.close),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).popUntil((route) => route.isFirst);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          PageToEnter() //builder: (context) => Home(title: APP_TITLE)
+                      ),
+                );
+              },
             ),
           ],
         ), // Populate the Drawer in the next step.

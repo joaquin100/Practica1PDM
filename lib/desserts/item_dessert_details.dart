@@ -58,7 +58,7 @@ class _ItemDessertDetailsState extends State<ItemDessertDetails> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 35, horizontal: 20),
+              margin: EdgeInsets.symmetric(vertical: 31, horizontal: 20),
               height: MediaQuery.of(context).size.height / 3,
               child: Stack(
                 children: [

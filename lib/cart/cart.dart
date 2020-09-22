@@ -133,6 +133,9 @@ class _CartState extends State<Cart> {
   }
 
   void removeList(int index) {
+    _total = _total -
+        (widget.productsList[index].productAmount *
+            widget.productsList[index].productPrice);
     widget.productsList.removeAt(index);
     setState(() {});
   }

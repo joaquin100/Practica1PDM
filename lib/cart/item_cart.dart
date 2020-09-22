@@ -53,8 +53,8 @@ class _ItemCartState extends State<ItemCart> {
                   right: 40,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 10,
-                      bottom: 30,
+                      top: 5,
+                      bottom: 40,
                       left: 5,
                       right: 160,
                     ),
@@ -74,7 +74,7 @@ class _ItemCartState extends State<ItemCart> {
                 ),
                 Positioned(
                   bottom: 0,
-                  left: 40,
+                  left: 30,
                   child: IconButton(
                     icon: Icon(Icons.remove_circle),
                     onPressed: _remProd,
@@ -146,7 +146,7 @@ class _ItemCartState extends State<ItemCart> {
                     onPressed: () {
                       widget.onRemove(widget.index);
                       print("Removing");
-                      _remProd();
+                      //_remProd();
                     },
                   ),
                 ),
