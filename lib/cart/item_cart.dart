@@ -2,13 +2,22 @@ import 'package:estructura_practica_1/models/product_item_cart.dart';
 import 'package:estructura_practica_1/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ItemCart extends StatefulWidget {
   final ProductItemCart product;
   final ValueChanged<double> onAmountUpdated;
+  final ValueChanged<int> onRemove;
+  final int index;
+
+  //final Function(ItemCart p) remove;
+  //List<ProductItemCart> productsList;
   ItemCart({
     Key key,
     @required this.onAmountUpdated,
     @required this.product,
+    @required this.index,
+    //this.remove,
+    @required this.onRemove,
   }) : super(key: key);
 
   @override
@@ -135,10 +144,9 @@ class _ItemCartState extends State<ItemCart> {
                     ),
                     color: Colors.black,
                     onPressed: () {
-                      setState(() {
-                        //widget.product.productTitle = null;
-                        print("Removing");
-                      });
+                      widget.onRemove(widget.index);
+                      print("Removing");
+                      _remProd();
                     },
                   ),
                 ),

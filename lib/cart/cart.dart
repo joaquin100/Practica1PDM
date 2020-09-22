@@ -6,7 +6,7 @@ import 'package:estructura_practica_1/models/product_item_cart.dart';
 
 // ignore: must_be_immutable
 class Cart extends StatefulWidget {
-  List<ProductItemCart> productsList = [];
+  List<ProductItemCart> productsList;
   Cart({
     Key key,
     @required this.productsList,
@@ -38,8 +38,8 @@ class _CartState extends State<Cart> {
               if (widget.productsList.elementAt(i).productTitle == null) {
                 widget.productsList.removeAt(i);
               }
-            }
-            Navigator.of(context).pop(widget.productsList);*/
+            }*/
+            Navigator.of(context).pop(widget.productsList);
           },
           child: Icon(
             Icons.arrow_back_ios,
@@ -58,8 +58,10 @@ class _CartState extends State<Cart> {
                 itemCount: widget.productsList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ItemCart(
+                    index: index,
                     onAmountUpdated: _priceUpdate,
                     product: widget.productsList[index],
+                    onRemove: removeList,
                   );
                 },
               ),
@@ -128,5 +130,10 @@ class _CartState extends State<Cart> {
     setState(() {
       _total += newItemPrice;
     });
+  }
+
+  void removeList(int index) {
+    widget.productsList.removeAt(index);
+    setState(() {});
   }
 }
